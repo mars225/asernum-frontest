@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowLeft, Search, Calendar, RefreshCw, Download, Edit, BarChart3, MoreHorizontal, Users, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { DonutChart } from '../../../components/DonutChart';
@@ -36,7 +36,20 @@ const recentTransactionsHistory = [
     { type: 'Paiement course', amount: '+2500 FCFA' },
 ];
 
-export default function MagasinDetailsPage({ params }: { params: { id: string } }) {
+
+export default function MagasinDetailsPage({ 
+  params 
+}: { 
+  params: Promise<{ id: string }> 
+}) {
+  const [id, setId] = useState<string>('');
+
+  useEffect(() => {
+    params.then(resolvedParams => {
+      setId(resolvedParams.id);
+    });
+  }, [params]);
+    
     const router = useRouter();
     const [activeTab, setActiveTab] = useState<'transactions' | 'caissiers'>('transactions');
     const [selectedCashier, setSelectedCashier] = useState<string | null>(null);

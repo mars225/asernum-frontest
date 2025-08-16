@@ -7,8 +7,7 @@ import AuthLayout from '../components/AuthLayout';
 export default function ResetPasswordPage() {
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     
     // Simulation simple
     await new Promise(resolve => setTimeout(resolve, 1000));
