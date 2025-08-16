@@ -4,10 +4,11 @@ type Props = {
   children: ReactNode;
 };
 
+
 export default function AuthLayout({ children }: Props) {
   return (
     <div className="relative flex h-screen w-screen items-center justify-center bg-red-600 overflow-hidden">
-      {/* Oiseau en arrière-plan */}
+      {/* Logo */}
       <div className="absolute inset-0 flex items-center justify-center">
         <img
           src="/bird.svg"

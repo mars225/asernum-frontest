@@ -37,19 +37,19 @@ const recentTransactionsHistory = [
 ];
 
 
-export default function MagasinDetailsPage({ 
-  params 
-}: { 
-  params: Promise<{ id: string }> 
+export default function MagasinDetailsPage({
+    params
+}: {
+    params: Promise<{ id: string }>
 }) {
-  const [id, setId] = useState<string>('');
+    const [id, setId] = useState<string>('');
 
-  useEffect(() => {
-    params.then(resolvedParams => {
-      setId(resolvedParams.id);
-    });
-  }, [params]);
-    
+    useEffect(() => {
+        params.then(resolvedParams => {
+            setId(resolvedParams.id);
+        });
+    }, [params]);
+
     const router = useRouter();
     const [activeTab, setActiveTab] = useState<'transactions' | 'caissiers'>('transactions');
     const [selectedCashier, setSelectedCashier] = useState<string | null>(null);
@@ -75,9 +75,9 @@ export default function MagasinDetailsPage({
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 bg-white p-6 rounded-lg mb-8">
-                {/* Main content */}
+                
                 <div className="lg:col-span-3 ">
-                    {/* Store info */}
+                    {/* Infos du magasin*/}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 bg-white">
                         <div>
                             <label className="block text-sm text-gray-600 mb-1">Nom du magasin</label>
@@ -105,29 +105,29 @@ export default function MagasinDetailsPage({
                         </div>
                     </div>
                 </div>
-                                    {/* Sidebar */}
-                    <div className="lg:col-span-1">
-                        <div className="bg-white rounded-xl p-6 border border-gray-200">
-                            <DonutChart
-                                data={[
-                                    { name: 'Rendu monnaie', value: 60, color: '#ef4444' },
-                                    { name: 'Paiement course', value: 40, color: '#10b981' }
-                                ]}
-                                centerValue="9364"
-                                centerLabel="Transactions"
-                            />
-                            <div className="mt-6 space-y-2">
-                                <div className="flex items-center text-sm">
-                                    <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
-                                    <span className="text-gray-600">Rendu monnaie</span>
-                                </div>
-                                <div className="flex items-center text-sm">
-                                    <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
-                                    <span className="text-gray-600">Paiement course</span>
-                                </div>
+                {/* Graphe */}
+                <div className="lg:col-span-1">
+                    <div className="bg-white rounded-xl p-6 border border-gray-200">
+                        <DonutChart
+                            data={[
+                                { name: 'Rendu monnaie', value: 60, color: '#ef4444' },
+                                { name: 'Paiement course', value: 40, color: '#10b981' }
+                            ]}
+                            centerValue="9364"
+                            centerLabel="Transactions"
+                        />
+                        <div className="mt-6 space-y-2">
+                            <div className="flex items-center text-sm">
+                                <div className="w-3 h-3 bg-red-500 rounded-full mr-2"></div>
+                                <span className="text-gray-600">Rendu monnaie</span>
+                            </div>
+                            <div className="flex items-center text-sm">
+                                <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                                <span className="text-gray-600">Paiement course</span>
                             </div>
                         </div>
                     </div>
+                </div>
 
 
             </div>
@@ -200,7 +200,7 @@ export default function MagasinDetailsPage({
                         </div>
                     </div>
 
-                    {/* Transactions table */}
+                    {/* Table des transactions*/}
                     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
                         <table className="w-full">
                             <thead>
@@ -266,7 +266,7 @@ export default function MagasinDetailsPage({
                         </div>
                     </div>
 
-                    {/* Caissiers table */}
+                    {/* Table des caissiers */}
                     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
                         <table className="w-full">
                             <thead>
@@ -323,7 +323,7 @@ export default function MagasinDetailsPage({
                     </div>
                 </div>
             )}
-            {/* Cashier History Sidebar */}
+            {/* Historique des transactions */}
             {selectedCashier && (
                 <div className="fixed inset-0 backdrop-blur-none z-50 flex justify-end">
                     <div className="bg-white w-96 h-full overflow-y-auto">
