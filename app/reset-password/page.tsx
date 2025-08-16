@@ -8,6 +8,7 @@ export default function ResetPasswordPage() {
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     
     // Simulation simple
     await new Promise(resolve => setTimeout(resolve, 1000));
